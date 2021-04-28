@@ -2,9 +2,12 @@ version: '2.1'
 
 services:
   jupyter:
-    image: jupyter/all-spark-notebook
+    build:
+      context: ./docker
+      dockerfile: ./DockerFile
     volumes:
       - ./work:/home/jovyan/work
       - ./data:/home/jovyan/data
+      - ./jars:/home/jovyan/jars
     ports:
       - 8888:8888
